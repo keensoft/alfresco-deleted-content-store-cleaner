@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="deletedContentStoreCleaner" class="es.keensoft.repo.content.cleanup.DeletedContentStoreCleaner">
+		<property name="deletedContentStore" ref="deletedContentStore" />
+		<!-- Reuse property from deletedNodeCleanup job -->
+		<property name="minPurgeAgeDays" value="${index.tracking.minRecordPurgeAgeDays}" />
+	</bean>
+
+	<bean id="deletedContentStoreCleanerJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass">
+			<value>es.keensoft.repo.content.cleanup.DeletedContentStoreCleanupJob
+			</value>
+		</property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="deletedContentStoreCleaner">
+					<ref bean="deletedContentStoreCleaner" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="deletedContentStoreCleanerTrigger" class="org.alfresco.util.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="deletedContentStoreCleanerJobDetail" />
+		</property>
+		<property name="scheduler">
+			<ref bean="schedulerFactory" />
+		</property>
+		<property name="cronExpression">
+			<value>${system.content.deleted.cronExpression}</value>
+		</property>
+		<property name="startDelayMinutes">
+			<value>${system.cronJob.startDelayMinutes}</value>
+		</property>
+	</bean>
+
+</beans>
