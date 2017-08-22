@@ -10,7 +10,7 @@ Once a content has been deleted from trashcan, `ContentStoreCleaner` job moves i
 
 Configuring both Trashcan Cleaner and Deleted Content Store Cleaner addons, contents will be removed phisically from content stores without user or admin operation.
 
-![node-lifecycle](https://cloud.githubusercontent.com/assets/5584952/26724443/b9c0bda8-4799-11e7-978d-6da9a4ca802f.png)
+![deleted-content-store-cleaner](https://user-images.githubusercontent.com/5584952/29554931-3f2efb64-8721-11e7-9994-2c3b9f4f2a5e.png)
 
 **License**
 The plugin is licensed under the [LGPL v3.0](http://www.gnu.org/licenses/lgpl-3.0.html). 
