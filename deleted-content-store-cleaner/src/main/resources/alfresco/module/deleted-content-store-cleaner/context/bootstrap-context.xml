@@ -4,7 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<bean id="deletedContentStoreCleaner" class="es.keensoft.repo.content.cleanup.DeletedContentStoreCleaner">
+	<bean id="deletedContentStoreCleaner"
+		class="es.keensoft.repo.content.cleanup.DeletedContentStoreCleaner">
 		<property name="deletedContentStore" ref="deletedContentStore" />
 		<!-- Reuse property from deletedNodeCleanup job -->
 		<property name="minPurgeAgeDays" value="${index.tracking.minRecordPurgeAgeDays}" />
@@ -12,8 +13,7 @@
 
 	<bean id="deletedContentStoreCleanerJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
 		<property name="jobClass">
-			<value>es.keensoft.repo.content.cleanup.DeletedContentStoreCleanupJob
-			</value>
+			<value>es.keensoft.repo.content.cleanup.DeletedContentStoreCleanupJob</value>
 		</property>
 		<property name="jobDataAsMap">
 			<map>

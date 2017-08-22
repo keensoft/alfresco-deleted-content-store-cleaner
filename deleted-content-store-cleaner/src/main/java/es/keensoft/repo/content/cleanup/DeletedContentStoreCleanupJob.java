@@ -7,13 +7,13 @@ import org.quartz.JobExecutionException;
 
 public class DeletedContentStoreCleanupJob implements Job {
 
-	@Override
-	public void execute(JobExecutionContext context) throws JobExecutionException {
-		
+    @Override
+    public void execute(JobExecutionContext context) throws JobExecutionException {
+
         JobDataMap jobData = context.getJobDetail().getJobDataMap();
-        DeletedContentStoreCleaner contentStoreCleaner = (DeletedContentStoreCleaner) jobData.get("deletedContentStoreCleaner");;
+        DeletedContentStoreCleaner contentStoreCleaner = (DeletedContentStoreCleaner) jobData.get("deletedContentStoreCleaner");
         contentStoreCleaner.execute();
-		
-	}
+
+    }
 
 }
