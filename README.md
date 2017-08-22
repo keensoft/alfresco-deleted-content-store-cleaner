@@ -36,3 +36,11 @@ Building the artifacts
 ----------------------
 You can build the artifacts from source code using maven
 ```$ mvn clean package```
+
+Configuration
+-------------
+Job can be planified by including following property in `alfresco-global.properties`
+```
+system.content.deleted.cronExpression=0 0 1 * * ?
+```
+By default, it will run every night at 1 AM.
