@@ -44,3 +44,14 @@ Job can be planified by including following property in `alfresco-global.propert
 system.content.deleted.cronExpression=0 0 1 * * ?
 ```
 By default, it will run every night at 1 AM.
+
+
+Further references
+------------------
+Eventually you can configure Alfresco not to use Deleted Content Store at all by including following line at `alfresco-global.properties` 
+
+```
+system.content.eagerOrphanCleanup=true
+```
+
+Details available at [Tony de la Fuente blog post](https://blyx.com/2014/08/18/understanding-alfresco-content-deletion/).
