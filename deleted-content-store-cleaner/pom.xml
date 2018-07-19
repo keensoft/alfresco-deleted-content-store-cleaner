@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>es.keensoft</groupId>
     <artifactId>deleted-content-store-cleaner</artifactId>
-    <version>1.1.0</version>
+    <version>1.0.0</version>
     <name>deleted-content-store-cleaner Platform Jar Module - SDK 3</name>
     <description>Platform JAR Module (to be included in the alfresco.war) - SDK 3</description>
     <packaging>jar</packaging>
@@ -34,9 +34,9 @@
         <!-- Alfresco Platform webapp version, this is the original Alfresco webapp that will be
             customized and then deployed and run by the tomcat maven plugin when
             executing for example $ mvn clean install alfresco:run -->
-        <alfresco.platform.version>5.2.f</alfresco.platform.version>
+        <alfresco.platform.version>6.0.7-ga</alfresco.platform.version>
         <!-- Alfresco Share version, so we can bring in correct alfresco-share-services artifact -->
-        <alfresco.share.version>5.2.e</alfresco.share.version>
+        <alfresco.share.version>6.0.b</alfresco.share.version>
 
         <!-- Default is to run with a Community edition, change to 'enterprise' if using Enterprise edition -->
         <maven.alfresco.edition>community</maven.alfresco.edition>
@@ -64,7 +64,7 @@
         <dependencies>
             <dependency>
                 <groupId>${alfresco.groupId}</groupId>
-                <artifactId>alfresco-platform-distribution</artifactId>
+                <artifactId>alfresco-content-services-community-distribution</artifactId>
                 <version>${alfresco.platform.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
