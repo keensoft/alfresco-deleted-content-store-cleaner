@@ -10,7 +10,7 @@ Once a content has been deleted from trashcan, `ContentStoreCleaner` job moves i
 
 Configuring both Trashcan Cleaner and Deleted Content Store Cleaner addons, contents will be removed phisically from content stores without user or admin operation.
 
-![deleted-content-store-cleaner](https://user-images.githubusercontent.com/5584952/29554931-3f2efb64-8721-11e7-9994-2c3b9f4f2a5e.png)
+![deleted-content-store-cleaner](https://user-images.githubusercontent.com/5584952/39985295-7b9e5f3c-575e-11e8-8cf2-5069347e009f.png)
 
 **License**
 The plugin is licensed under the [LGPL v3.0](http://www.gnu.org/licenses/lgpl-3.0.html). 
@@ -58,3 +58,7 @@ system.content.eagerOrphanCleanup=true
 ```
 
 Details available at [Tony de la Fuente blog post](https://blyx.com/2014/08/18/understanding-alfresco-content-deletion/).
+
+Contributors
+------------
+* [fsckawk](https://github.com/fsckawk)
