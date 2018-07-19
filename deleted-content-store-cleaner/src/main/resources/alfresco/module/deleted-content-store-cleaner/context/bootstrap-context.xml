@@ -7,36 +7,32 @@
 	<bean id="deletedContentStoreCleaner"
 		class="es.keensoft.repo.content.cleanup.DeletedContentStoreCleaner">
 		<property name="deletedContentStore" ref="deletedContentStore" />
-		<!-- Reuse property from deletedNodeCleanup job -->
 		<property name="minPurgeAgeDays" value="${index.tracking.minRecordPurgeAgeDays}" />
 	</bean>
 
-	<bean id="deletedContentStoreCleanerJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+	<bean id="deletedContentStoreCleanerJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
 		<property name="jobClass">
 			<value>es.keensoft.repo.content.cleanup.DeletedContentStoreCleanupJob</value>
 		</property>
 		<property name="jobDataAsMap">
 			<map>
-				<entry key="deletedContentStoreCleaner">
-					<ref bean="deletedContentStoreCleaner" />
-				</entry>
+	            <entry key="deletedContentStoreCleaner" value-ref="deletedContentStoreCleaner"/>
 			</map>
 		</property>
 	</bean>
 
-	<bean id="deletedContentStoreCleanerTrigger" class="org.alfresco.util.CronTriggerBean">
-		<property name="jobDetail">
-			<ref bean="deletedContentStoreCleanerJobDetail" />
-		</property>
-		<property name="scheduler">
-			<ref bean="schedulerFactory" />
-		</property>
-		<property name="cronExpression">
-			<value>${system.content.deleted.cronExpression}</value>
-		</property>
-		<property name="startDelayMinutes">
-			<value>${system.cronJob.startDelayMinutes}</value>
-		</property>
-	</bean>
-
+    <bean id="deletedContentStoreCleanerSchedulerAccessor" class="org.alfresco.schedule.AlfrescoSchedulerAccessorBean">
+        <property name="scheduler" ref="schedulerFactory"/>
+        <property name="triggers">
+            <list>
+                <bean id="feedCleanerTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+                    <property name="cronExpression" value="${system.content.deleted.cronExpression}"/>
+                    <property name="startDelay" value="${system.cronJob.startDelayMinutes}"/>
+                    <property name="jobDetail" ref="deletedContentStoreCleanerJobDetail"/>
+                </bean>
+            </list>
+        </property>
+        <property name="enabled" value="true" />
+    </bean>	
+		
 </beans>

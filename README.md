@@ -16,10 +16,13 @@ Configuring both Trashcan Cleaner and Deleted Content Store Cleaner addons, cont
 The plugin is licensed under the [LGPL v3.0](http://www.gnu.org/licenses/lgpl-3.0.html). 
 
 **State**
-Current addon release is 1.0.0
+Current addon release is 1.1.0
 
 **Compatibility**
-The current version has been developed using Alfresco 201702 and Alfresco SDK 3.0.1
+The current version has been developed using Alfresco 201707 and Alfresco SDK 3.0.1
+
+* Use 1.0.0 for Alfresco 201707 (aka Alfresco 5.2)
+* Use 1.1.0+ for Alfresco 201806 (aka Alfresco 6.0)
 
 ***No original Alfresco resources have been overwritten***
 
